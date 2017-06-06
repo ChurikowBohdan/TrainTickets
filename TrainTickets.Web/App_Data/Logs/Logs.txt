@@ -42,3 +42,91 @@ DEBUG 2017-05-26 20:40:38,343 [1    ] Abp.Logging.LogHelper                    -
 DEBUG 2017-05-26 20:40:38,345 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Roles.IRoleAppService' with service name 'app/role'.
 DEBUG 2017-05-26 20:40:38,346 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
 DEBUG 2017-05-26 20:40:38,348 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Route.IRouteService' with service name 'app/routeService'.
+DEBUG 2017-06-06 22:18:09,680 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-06-06 22:18:09,691 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2017-06-06 22:18:09,696 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.Web.TrainTicketsWebModule, TrainTickets.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,697 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.TrainTicketsDataModule, TrainTickets.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,697 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,697 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,697 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.TrainTicketsCoreModule, TrainTickets.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.TrainTicketsApplicationModule, TrainTickets.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.Api.TrainTicketsWebApiModule, TrainTickets.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,698 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,699 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,699 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:09,701 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2017-06-06 22:18:09,804 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-06-06 22:18:09,804 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-06-06 22:18:09,804 [1    ] o.Configuration.LanguageManagementConfig - Converted TrainTickets (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-06-06 22:18:09,804 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-06-06 22:18:10,022 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: TrainTickets.EntityFramework.TrainTicketsDbContext, TrainTickets.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:18:11,023 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2017-06-06 22:18:11,030 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-06-06 22:18:11,034 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-06-06 22:18:11,036 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TrainTickets
+DEBUG 2017-06-06 22:18:11,037 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-06-06 22:18:11,107 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-06-06 22:18:11,150 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2017-06-06 22:18:11,150 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2017-06-06 22:18:11,152 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Sessions.Dto.UserLoginInfoDto
+DEBUG 2017-06-06 22:18:11,152 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Users.Dto.CreateUserInput
+DEBUG 2017-06-06 22:18:11,152 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Users.Dto.UserListDto
+DEBUG 2017-06-06 22:18:11,152 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.MultiTenancy.Dto.CreateTenantInput
+DEBUG 2017-06-06 22:18:11,152 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.MultiTenancy.Dto.TenantListDto
+DEBUG 2017-06-06 22:18:11,152 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Routes.Dto.StationDto
+DEBUG 2017-06-06 22:18:11,152 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2017-06-06 22:18:12,595 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2017-06-06 22:18:12,596 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2017-06-06 22:18:12,596 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2017-06-06 22:18:12,597 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2017-06-06 22:18:12,598 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Routes.IRouteService' with service name 'app/routeService'.
+DEBUG 2017-06-06 22:19:32,446 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-06-06 22:19:32,456 [1    ] Abp.Modules.AbpModuleManager             - Found 16 ABP modules in total.
+DEBUG 2017-06-06 22:19:32,461 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.Web.TrainTicketsWebModule, TrainTickets.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,463 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.TrainTicketsDataModule, TrainTickets.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,463 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,463 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,463 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,463 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.TrainTicketsCoreModule, TrainTickets.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.TrainTicketsApplicationModule, TrainTickets.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: TrainTickets.Api.TrainTicketsWebApiModule, TrainTickets.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,464 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=2.0.2.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:32,466 [1    ] Abp.Modules.AbpModuleManager             - 16 modules loaded.
+DEBUG 2017-06-06 22:19:32,555 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-06-06 22:19:32,555 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-06-06 22:19:32,555 [1    ] o.Configuration.LanguageManagementConfig - Converted TrainTickets (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-06-06 22:19:32,555 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-06-06 22:19:32,764 [1    ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: TrainTickets.EntityFramework.TrainTicketsDbContext, TrainTickets.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-06-06 22:19:33,681 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2017-06-06 22:19:33,687 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-06-06 22:19:33,691 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-06-06 22:19:33,692 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: TrainTickets
+DEBUG 2017-06-06 22:19:33,693 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-06-06 22:19:33,767 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-06-06 22:19:33,808 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2017-06-06 22:19:33,808 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2017-06-06 22:19:33,810 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Sessions.Dto.UserLoginInfoDto
+DEBUG 2017-06-06 22:19:33,810 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Users.Dto.CreateUserInput
+DEBUG 2017-06-06 22:19:33,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Users.Dto.UserListDto
+DEBUG 2017-06-06 22:19:33,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.MultiTenancy.Dto.CreateTenantInput
+DEBUG 2017-06-06 22:19:33,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.MultiTenancy.Dto.TenantListDto
+DEBUG 2017-06-06 22:19:33,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Routes.Dto.StationDto
+DEBUG 2017-06-06 22:19:33,811 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - TrainTickets.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2017-06-06 22:19:35,080 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2017-06-06 22:19:35,081 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2017-06-06 22:19:35,081 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2017-06-06 22:19:35,082 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2017-06-06 22:19:35,083 [1    ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'TrainTickets.Routes.IRouteService' with service name 'app/routeService'.

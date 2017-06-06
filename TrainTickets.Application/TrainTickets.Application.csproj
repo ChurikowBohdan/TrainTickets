@@ -118,9 +118,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Route\Dto\RouteDto.cs" />
-    <Compile Include="Route\IRouteService.cs" />
-    <Compile Include="Route\RouteService.cs" />
+    <Compile Include="Routes\Dto\StationDto.cs" />
+    <Compile Include="Routes\IRouteService.cs" />
+    <Compile Include="Routes\RouteService.cs" />
     <Compile Include="TrainTicketsApplicationModule.cs" />
     <Compile Include="TrainTicketsAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
@@ -154,7 +154,10 @@
       <Name>TrainTickets.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Orders\" />
+    <Folder Include="Trains\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

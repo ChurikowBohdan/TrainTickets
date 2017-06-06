@@ -12,7 +12,7 @@ namespace TrainTickets.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "TrainTickets";
         }
 

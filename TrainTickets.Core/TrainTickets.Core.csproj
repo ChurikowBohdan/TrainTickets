@@ -112,13 +112,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administration\Administration.cs" />
-    <Compile Include="Customers\Customer.cs" />
-    <Compile Include="Route\IntermediateStation.cs" />
-    <Compile Include="Route\Routes.cs" />
-    <Compile Include="Ticket\Ticket.cs" />
-    <Compile Include="Train\Schedule.cs" />
-    <Compile Include="Train\Trains.cs" />
+    <Compile Include="Order\Order.cs" />
+    <Compile Include="Route\Route.cs" />
+    <Compile Include="Route\Station.cs" />
+    <Compile Include="Train\Train.cs" />
+    <Compile Include="Train\TrainType.cs" />
     <Compile Include="TrainTicketsConsts.cs" />
     <Compile Include="TrainTicketsCoreModule.cs" />
     <Compile Include="Authorization\TrainTicketsAuthorizationProvider.cs" />
