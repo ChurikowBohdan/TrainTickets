@@ -16,5 +16,12 @@ namespace TrainTickets.Trains {
 		void UpdateTrainType(TrainTypeDto TrainType);
 		void AddTrainType(TrainTypeDto TrainType);
 
+		//Train
+		ICollection<TrainDto> GetTrains();
+		TrainDto GetTrain(int id);
+		void DeleteTrain(int id);
+		void UpdateTrain(TrainDto train);
+		void AddTrain(TrainDto train);
+
 	}
 }

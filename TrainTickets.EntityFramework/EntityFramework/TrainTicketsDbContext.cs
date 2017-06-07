@@ -4,6 +4,7 @@ using TrainTickets.Authorization.Roles;
 using TrainTickets.MultiTenancy;
 using TrainTickets.Users;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace TrainTickets.EntityFramework {
 	public class TrainTicketsDbContext : AbpZeroDbContext<Tenant, Role, User> {
@@ -53,6 +54,14 @@ namespace TrainTickets.EntityFramework {
 			modelBuilder.Entity<Train>().ToTable("Train");
 			modelBuilder.Entity<Order>().ToTable("Order");
 			modelBuilder.Entity<Route>().ToTable("Route");
+
+			modelBuilder.Entity<Train>().HasRequired(t => t.TrainType).WithMany().HasForeignKey(t => t.TrainTypeId);
+			modelBuilder.Entity<Route>().HasRequired(t => t.ArrivalStation).WithMany().HasForeignKey(t => t.ArrivalStationId);
+			modelBuilder.Entity<Route>().HasRequired(t => t.DisaptchingStation).WithMany().HasForeignKey(t => t.DispatchingStationId);
+			modelBuilder.Entity<Route>().HasOptional(t => t.PreviousStation).WithMany().HasForeignKey(t => t.PreviousStationId);
+			modelBuilder.Entity<Route>().HasOptional(t => t.NextStation).WithMany().HasForeignKey(t => t.NextStationId);
+
+			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 		}
 	}
 }

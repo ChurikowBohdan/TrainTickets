@@ -10,18 +10,17 @@ namespace TrainTickets {
 	public class Route : Entity<int> {
 		public int DispatchingStationId { get; set; }
 		public int ArrivalStationId { get; set; }
+		public int? PreviousStationId { get; set; }
+		public int? NextStationId { get; set; }
 		public decimal Price { get; set; }
 		public DateTime DepartureTime { get; set; }
 		public DateTime ArrivalTime { get; set; }
 		public int TrainId { get; set; }
 
-		//[ForeignKey("DispatchingStationId")]
 		public virtual Station DisaptchingStation { get; set; }
-
-		//[ForeignKey("ArrivalStationId")]
 		public virtual Station ArrivalStation { get; set; }
-
-		//[ForeignKey("TrainId")]
+		public virtual Station PreviousStation { get; set; }
+		public virtual Station NextStation { get; set; }
 		public virtual Train Train { get; set; }
 	}
 }

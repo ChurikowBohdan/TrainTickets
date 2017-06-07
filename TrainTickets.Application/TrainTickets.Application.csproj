@@ -118,10 +118,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Routes\Dto\RouteListItemDto.cs" />
     <Compile Include="Routes\Dto\StationDto.cs" />
     <Compile Include="Routes\IRouteService.cs" />
     <Compile Include="Routes\RouteService.cs" />
     <Compile Include="Trains\Dto\StationDto.cs" />
+    <Compile Include="Trains\Dto\TrainDto.cs" />
     <Compile Include="Trains\ITrainService.cs" />
     <Compile Include="Trains\TrainTypeService.cs" />
     <Compile Include="TrainTicketsApplicationModule.cs" />

@@ -12,8 +12,6 @@ namespace TrainTickets {
 		public string Number { get; set; }
 		public int PlacesCount { get; set; }
 		public int TrainTypeId { get; set; }
-
-		//[ForeignKey("TrainTypeId")]
 		public virtual TrainType TrainType { get; set; }
 	}
 }

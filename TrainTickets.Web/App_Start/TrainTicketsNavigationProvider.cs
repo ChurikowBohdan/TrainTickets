@@ -60,6 +60,13 @@ namespace TrainTickets.Web
 						url: "traintype/list",
 						icon: "fa fa-users"
 					)
+				).AddItem(
+					new MenuItemDefinition(
+						"Trains",
+						L("Trains"),
+						url: "train/list",
+						icon: "fa fa-users"
+					)
 				);
 
 		}

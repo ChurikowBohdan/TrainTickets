@@ -16,5 +16,8 @@ namespace TrainTickets.Routes {
 		void UpdateStation(StationDto station);
 		void AddStation(StationDto station);
 
+		//Routes
+		ICollection<RouteListItemDto> GetRoutes();
+
 	}
 }
