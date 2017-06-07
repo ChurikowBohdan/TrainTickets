@@ -82,11 +82,11 @@
     <Reference Include="Abp.Web.SignalR, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.Web.SignalR.2.0.2\lib\net46\Abp.Web.SignalR.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.2.0.1\lib\net46\Abp.Zero.dll</HintPath>
+    <Reference Include="Abp.Zero, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.2.0.2\lib\net46\Abp.Zero.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.Common.2.0.1\lib\net46\Abp.Zero.Common.dll</HintPath>
+    <Reference Include="Abp.Zero.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.Common.2.0.2\lib\net46\Abp.Zero.Common.dll</HintPath>
     </Reference>
     <Reference Include="Abp.Zero.EntityFramework, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.Zero.EntityFramework.2.0.1\lib\net46\Abp.Zero.EntityFramework.dll</HintPath>
@@ -464,6 +464,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
+    <Compile Include="Controllers\TrainTypeController.cs" />
     <Compile Include="Controllers\StationController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -504,6 +505,11 @@
     <Content Include="Views\Shared\_GridPager.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
     <Content Include="Views\Station\List.cshtml" />
+    <Content Include="Views\Station\Edit.cshtml" />
+    <Content Include="Views\TrainType\Edit.cshtml" />
+    <Content Include="Views\TrainType\List.cshtml" />
+    <Content Include="Views\Station\Add.cshtml" />
+    <Content Include="Views\TrainType\Add.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -552,7 +558,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61814</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

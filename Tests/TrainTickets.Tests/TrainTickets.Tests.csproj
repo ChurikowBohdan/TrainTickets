@@ -51,11 +51,11 @@
     <Reference Include="Abp.TestBase, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Abp.TestBase.2.0.2\lib\net46\Abp.TestBase.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.Zero.2.0.1\lib\net46\Abp.Zero.dll</HintPath>
+    <Reference Include="Abp.Zero, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Abp.Zero.2.0.2\lib\net46\Abp.Zero.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Abp.Zero.Common.2.0.1\lib\net46\Abp.Zero.Common.dll</HintPath>
+    <Reference Include="Abp.Zero.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Abp.Zero.Common.2.0.2\lib\net46\Abp.Zero.Common.dll</HintPath>
     </Reference>
     <Reference Include="Abp.Zero.EntityFramework, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Abp.Zero.EntityFramework.2.0.1\lib\net46\Abp.Zero.EntityFramework.dll</HintPath>

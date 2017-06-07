@@ -44,11 +44,11 @@
     <Reference Include="Abp.EntityFramework.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.EntityFramework.Common.2.0.2\lib\net46\Abp.EntityFramework.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.2.0.1\lib\net46\Abp.Zero.dll</HintPath>
+    <Reference Include="Abp.Zero, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.2.0.2\lib\net46\Abp.Zero.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.Zero.Common, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.Zero.Common.2.0.1\lib\net46\Abp.Zero.Common.dll</HintPath>
+    <Reference Include="Abp.Zero.Common, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.Zero.Common.2.0.2\lib\net46\Abp.Zero.Common.dll</HintPath>
     </Reference>
     <Reference Include="Abp.Zero.EntityFramework, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.Zero.EntityFramework.2.0.1\lib\net46\Abp.Zero.EntityFramework.dll</HintPath>
@@ -134,9 +134,9 @@
   <ItemGroup>
     <Compile Include="EntityFramework\TrainTicketsDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\TrainTicketsRepositoryBase.cs" />
-    <Compile Include="Migrations\201701271145151_AbpZero_Initial.cs" />
-    <Compile Include="Migrations\201701271145151_AbpZero_Initial.Designer.cs">
-      <DependentUpon>201701271145151_AbpZero_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201706070642276_init.cs" />
+    <Compile Include="Migrations\201706070642276_init.Designer.cs">
+      <DependentUpon>201706070642276_init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
@@ -161,8 +161,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201701271145151_AbpZero_Initial.resx">
-      <DependentUpon>201701271145151_AbpZero_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706070642276_init.resx">
+      <DependentUpon>201706070642276_init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

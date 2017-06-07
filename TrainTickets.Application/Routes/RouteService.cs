@@ -37,7 +37,10 @@ namespace TrainTickets.Routes {
 		}
 
 		public void UpdateStation(StationDto stationDto) {
-			var station = stationDto.MapTo<Station>();
+			var station = new Station {
+				Id = stationDto.Id,
+				Name = stationDto.Name
+			};
 			_stationsRepository.Update(station);
 		}
 	}

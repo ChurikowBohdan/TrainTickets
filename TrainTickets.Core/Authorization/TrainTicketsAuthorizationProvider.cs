@@ -16,6 +16,7 @@ namespace TrainTickets.Authorization
             }
 
             var users = pages.CreateChildPermission(PermissionNames.Pages_Users, L("Users"));
+			var stations = pages.CreateChildPermission(PermissionNames.Pages_Stations, L("Station"));
 
             //Host permissions
             var tenants = pages.CreateChildPermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);

@@ -77,6 +77,50 @@ namespace TrainTickets.Migrations.SeedData
 
                 _context.SaveChanges();
             }
+
+			var accountersRoleForHost = _context.Roles.FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Host.Accounter);
+			if (accountersRoleForHost == null) {
+				accountersRoleForHost = _context.Roles.Add(new Role { Name = StaticRoleNames.Host.Accounter, DisplayName = StaticRoleNames.Host.Accounter, IsStatic = true });
+				_context.SaveChanges();
+
+				//Grant all tenant permissions
+				var permissions = PermissionFinder
+					.GetAllPermissions(new TrainTicketsAuthorizationProvider())
+					.Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Host))
+					.ToList();
+
+				foreach (var permission in permissions) {
+					_context.Permissions.Add(
+						new RolePermissionSetting {
+							Name = permission.Name,
+							IsGranted = true,
+							RoleId = accountersRoleForHost.Id
+						});
+				}
+
+				_context.SaveChanges();
+			}
+
+			//Admin user for tenancy host
+
+			var accounterUserForHost = _context.Users.FirstOrDefault(u => u.TenantId == null && u.UserName == "accounter");
+			if (accounterUserForHost == null) {
+				accounterUserForHost = _context.Users.Add(
+					new User {
+						UserName = "accounter",
+						Name = "accounter",
+						Surname = "accounter",
+						EmailAddress = "accounter@aspnetboilerplate.com",
+						IsEmailConfirmed = true,
+						Password = new PasswordHasher().HashPassword(User.DefaultPassword)
+					});
+
+				_context.SaveChanges();
+
+				_context.UserRoles.Add(new UserRole(null, accounterUserForHost.Id, accountersRoleForHost.Id));
+
+				_context.SaveChanges();
+			}
         }
     }
 }

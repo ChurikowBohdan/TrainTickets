@@ -7,13 +7,13 @@ namespace TrainTickets.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AbpZero_Initial : IMigrationMetadata
+    public sealed partial class init : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AbpZero_Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(init));
         
         string IMigrationMetadata.Id
         {
-            get { return "201701271145151_AbpZero_Initial"; }
+            get { return "201706070642276_init"; }
         }
         
         string IMigrationMetadata.Source

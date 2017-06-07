@@ -5,7 +5,7 @@ namespace TrainTickets.Migrations
     using System.Data.Entity.Infrastructure.Annotations;
     using System.Data.Entity.Migrations;
     
-    public partial class AbpZero_Initial : DbMigration
+    public partial class init : DbMigration
     {
         public override void Up()
         {
@@ -182,6 +182,36 @@ namespace TrainTickets.Migrations
                 .Index(t => new { t.NotificationName, t.EntityTypeName, t.EntityId, t.UserId });
             
             CreateTable(
+                "dbo.Order",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        MiddleName = c.String(),
+                        PasportNumber = c.String(),
+                        DispatchingStationId = c.Int(nullable: false),
+                        ArrivalStationId = c.Int(nullable: false),
+                        DispatchingTime = c.DateTime(nullable: false),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        DisaptchingStation_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Station", t => t.ArrivalStationId, cascadeDelete: true)
+                .ForeignKey("dbo.Station", t => t.DisaptchingStation_Id)
+                .Index(t => t.ArrivalStationId)
+                .Index(t => t.DisaptchingStation_Id);
+            
+            CreateTable(
+                "dbo.Station",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.AbpOrganizationUnits",
                 c => new
                     {
@@ -238,11 +268,11 @@ namespace TrainTickets.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        TenantId = c.Int(),
+                        Name = c.String(nullable: false, maxLength: 32),
                         DisplayName = c.String(nullable: false, maxLength: 64),
                         IsStatic = c.Boolean(nullable: false),
                         IsDefault = c.Boolean(nullable: false),
-                        TenantId = c.Int(),
-                        Name = c.String(nullable: false, maxLength: 32),
                         IsDeleted = c.Boolean(nullable: false),
                         DeleterUserId = c.Long(),
                         DeletionTime = c.DateTime(),
@@ -270,10 +300,12 @@ namespace TrainTickets.Migrations
                     {
                         Id = c.Long(nullable: false, identity: true),
                         AuthenticationSource = c.String(maxLength: 64),
+                        UserName = c.String(nullable: false, maxLength: 32),
+                        TenantId = c.Int(),
+                        EmailAddress = c.String(nullable: false, maxLength: 256),
                         Name = c.String(nullable: false, maxLength: 32),
                         Surname = c.String(nullable: false, maxLength: 32),
                         Password = c.String(nullable: false, maxLength: 128),
-                        IsEmailConfirmed = c.Boolean(nullable: false),
                         EmailConfirmationCode = c.String(maxLength: 328),
                         PasswordResetCode = c.String(maxLength: 328),
                         LockoutEndDateUtc = c.DateTime(),
@@ -283,10 +315,8 @@ namespace TrainTickets.Migrations
                         IsPhoneNumberConfirmed = c.Boolean(nullable: false),
                         SecurityStamp = c.String(),
                         IsTwoFactorEnabled = c.Boolean(nullable: false),
+                        IsEmailConfirmed = c.Boolean(nullable: false),
                         IsActive = c.Boolean(nullable: false),
-                        UserName = c.String(nullable: false, maxLength: 32),
-                        TenantId = c.Int(),
-                        EmailAddress = c.String(nullable: false, maxLength: 256),
                         LastLoginTime = c.DateTime(),
                         IsDeleted = c.Boolean(nullable: false),
                         DeleterUserId = c.Long(),
@@ -389,6 +419,49 @@ namespace TrainTickets.Migrations
                 .Index(t => t.UserId);
             
             CreateTable(
+                "dbo.Route",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        DispatchingStationId = c.Int(nullable: false),
+                        ArrivalStationId = c.Int(nullable: false),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        DepartureTime = c.DateTime(nullable: false),
+                        ArrivalTime = c.DateTime(nullable: false),
+                        TrainId = c.Int(nullable: false),
+                        DisaptchingStation_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Station", t => t.ArrivalStationId, cascadeDelete: true)
+                .ForeignKey("dbo.Station", t => t.DisaptchingStation_Id)
+                .ForeignKey("dbo.Train", t => t.TrainId, cascadeDelete: true)
+                .Index(t => t.ArrivalStationId)
+                .Index(t => t.TrainId)
+                .Index(t => t.DisaptchingStation_Id);
+            
+            CreateTable(
+                "dbo.Train",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Number = c.String(),
+                        PlacesCount = c.Int(nullable: false),
+                        TrainTypeId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.TrainType", t => t.TrainTypeId, cascadeDelete: true)
+                .Index(t => t.TrainTypeId);
+            
+            CreateTable(
+                "dbo.TrainType",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.AbpTenantNotifications",
                 c => new
                     {
@@ -417,9 +490,9 @@ namespace TrainTickets.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         EditionId = c.Int(),
                         Name = c.String(nullable: false, maxLength: 128),
-                        IsActive = c.Boolean(nullable: false),
                         TenancyName = c.String(nullable: false, maxLength: 64),
                         ConnectionString = c.String(maxLength: 1024),
+                        IsActive = c.Boolean(nullable: false),
                         IsDeleted = c.Boolean(nullable: false),
                         DeleterUserId = c.Long(),
                         DeletionTime = c.DateTime(),
@@ -524,112 +597,19 @@ namespace TrainTickets.Migrations
                     { "DynamicFilter_UserOrganizationUnit_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 })
                 .PrimaryKey(t => t.Id);
-
-
-            CreateIndex("AbpAuditLogs", new[] { "TenantId", "ExecutionTime" });
-            CreateIndex("AbpAuditLogs", new[] { "UserId", "ExecutionTime" });
-
-            CreateIndex("AbpEditions", new[] { "Name" });
-
-            CreateIndex("AbpFeatures", new[] { "Discriminator", "TenantId", "Name" });
-            CreateIndex("AbpFeatures", new[] { "Discriminator", "EditionId", "Name" });
-            CreateIndex("AbpFeatures", new[] { "TenantId", "Name" });
-
-            CreateIndex("AbpLanguages", new[] { "TenantId", "Name" });
-
-            CreateIndex("AbpLanguageTexts", new[] { "TenantId", "LanguageName", "Source", "Key" });
-
-            CreateIndex("AbpOrganizationUnits", new[] { "TenantId", "ParentId" });
-            CreateIndex("AbpOrganizationUnits", new[] { "TenantId", "Code" });
-
-            DropIndex("AbpPermissions", new[] { "UserId" });
-            DropIndex("AbpPermissions", new[] { "RoleId" });
-            CreateIndex("AbpPermissions", new[] { "UserId", "Name" });
-            CreateIndex("AbpPermissions", new[] { "RoleId", "Name" });
-
-            CreateIndex("AbpRoles", new[] { "TenantId", "Name" });
-            CreateIndex("AbpRoles", new[] { "IsDeleted", "TenantId", "Name" });
-
-            DropIndex("AbpSettings", new[] { "UserId" });
-            CreateIndex("AbpSettings", new[] { "TenantId", "Name" });
-            CreateIndex("AbpSettings", new[] { "UserId", "Name" });
-
-            CreateIndex("AbpTenants", new[] { "TenancyName" });
-            CreateIndex("AbpTenants", new[] { "IsDeleted", "TenancyName" });
-
-            DropIndex("AbpUserLogins", new[] { "UserId" });
-            CreateIndex("AbpUserLogins", new[] { "UserId", "LoginProvider" });
-
-            CreateIndex("AbpUserOrganizationUnits", new[] { "TenantId", "UserId" });
-            CreateIndex("AbpUserOrganizationUnits", new[] { "TenantId", "OrganizationUnitId" });
-            CreateIndex("AbpUserOrganizationUnits", new[] { "UserId" });
-            CreateIndex("AbpUserOrganizationUnits", new[] { "OrganizationUnitId" });
-
-            DropIndex("AbpUserRoles", new[] { "UserId" });
-            CreateIndex("AbpUserRoles", new[] { "UserId", "RoleId" });
-            CreateIndex("AbpUserRoles", new[] { "RoleId" });
-
-            CreateIndex("AbpUsers", new[] { "TenantId", "UserName" });
-            CreateIndex("AbpUsers", new[] { "TenantId", "EmailAddress" });
-            CreateIndex("AbpUsers", new[] { "IsDeleted", "TenantId", "UserName" });
-            CreateIndex("AbpUsers", new[] { "IsDeleted", "TenantId", "EmailAddress" });
+            
         }
         
         public override void Down()
         {
-            DropIndex("AbpAuditLogs", new[] { "TenantId", "ExecutionTime" });
-            DropIndex("AbpAuditLogs", new[] { "UserId", "ExecutionTime" });
-
-            DropIndex("AbpEditions", new[] { "Name" });
-
-            DropIndex("AbpFeatures", new[] { "Discriminator", "TenantId", "Name" });
-            DropIndex("AbpFeatures", new[] { "Discriminator", "EditionId", "Name" });
-            DropIndex("AbpFeatures", new[] { "TenantId", "Name" });
-
-            DropIndex("AbpLanguages", new[] { "TenantId", "Name" });
-
-            DropIndex("AbpLanguageTexts", new[] { "TenantId", "LanguageName", "Source", "Key" });
-
-            DropIndex("AbpOrganizationUnits", new[] { "TenantId", "ParentId" });
-            DropIndex("AbpOrganizationUnits", new[] { "TenantId", "Code" });
-
-            CreateIndex("AbpPermissions", new[] { "UserId" });
-            CreateIndex("AbpPermissions", new[] { "RoleId" });
-
-            DropIndex("AbpPermissions", new[] { "UserId", "Name" });
-            DropIndex("AbpPermissions", new[] { "RoleId", "Name" });
-
-            DropIndex("AbpRoles", new[] { "TenantId", "Name" });
-            DropIndex("AbpRoles", new[] { "IsDeleted", "TenantId", "Name" });
-
-            CreateIndex("AbpSettings", new[] { "UserId" });
-            DropIndex("AbpSettings", new[] { "TenantId", "Name" });
-            DropIndex("AbpSettings", new[] { "UserId", "Name" });
-
-            DropIndex("AbpTenants", new[] { "TenancyName" });
-            DropIndex("AbpTenants", new[] { "IsDeleted", "TenancyName" });
-
-            CreateIndex("AbpUserLogins", new[] { "UserId" });
-            DropIndex("AbpUserLogins", new[] { "UserId", "LoginProvider" });
-
-            DropIndex("AbpUserOrganizationUnits", new[] { "TenantId", "UserId" });
-            DropIndex("AbpUserOrganizationUnits", new[] { "TenantId", "OrganizationUnitId" });
-            DropIndex("AbpUserOrganizationUnits", new[] { "UserId" });
-            DropIndex("AbpUserOrganizationUnits", new[] { "OrganizationUnitId" });
-
-            CreateIndex("AbpUserRoles", new[] { "UserId" });
-            DropIndex("AbpUserRoles", new[] { "UserId", "RoleId" });
-            DropIndex("AbpUserRoles", new[] { "RoleId" });
-
-            DropIndex("AbpUsers", new[] { "TenantId", "UserName" });
-            DropIndex("AbpUsers", new[] { "TenantId", "EmailAddress" });
-            DropIndex("AbpUsers", new[] { "IsDeleted", "TenantId", "UserName" });
-            DropIndex("AbpUsers", new[] { "IsDeleted", "TenantId", "EmailAddress" });
-
             DropForeignKey("dbo.AbpTenants", "LastModifierUserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpTenants", "EditionId", "dbo.AbpEditions");
             DropForeignKey("dbo.AbpTenants", "DeleterUserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpTenants", "CreatorUserId", "dbo.AbpUsers");
+            DropForeignKey("dbo.Route", "TrainId", "dbo.Train");
+            DropForeignKey("dbo.Train", "TrainTypeId", "dbo.TrainType");
+            DropForeignKey("dbo.Route", "DisaptchingStation_Id", "dbo.Station");
+            DropForeignKey("dbo.Route", "ArrivalStationId", "dbo.Station");
             DropForeignKey("dbo.AbpPermissions", "RoleId", "dbo.AbpRoles");
             DropForeignKey("dbo.AbpRoles", "LastModifierUserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpRoles", "DeleterUserId", "dbo.AbpUsers");
@@ -643,6 +623,8 @@ namespace TrainTickets.Migrations
             DropForeignKey("dbo.AbpUsers", "CreatorUserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpUserClaims", "UserId", "dbo.AbpUsers");
             DropForeignKey("dbo.AbpOrganizationUnits", "ParentId", "dbo.AbpOrganizationUnits");
+            DropForeignKey("dbo.Order", "DisaptchingStation_Id", "dbo.Station");
+            DropForeignKey("dbo.Order", "ArrivalStationId", "dbo.Station");
             DropForeignKey("dbo.AbpFeatures", "EditionId", "dbo.AbpEditions");
             DropIndex("dbo.AbpUserNotifications", new[] { "UserId", "State", "CreationTime" });
             DropIndex("dbo.AbpUserLoginAttempts", new[] { "TenancyName", "UserNameOrEmailAddress", "Result" });
@@ -651,6 +633,10 @@ namespace TrainTickets.Migrations
             DropIndex("dbo.AbpTenants", new[] { "LastModifierUserId" });
             DropIndex("dbo.AbpTenants", new[] { "DeleterUserId" });
             DropIndex("dbo.AbpTenants", new[] { "EditionId" });
+            DropIndex("dbo.Train", new[] { "TrainTypeId" });
+            DropIndex("dbo.Route", new[] { "DisaptchingStation_Id" });
+            DropIndex("dbo.Route", new[] { "TrainId" });
+            DropIndex("dbo.Route", new[] { "ArrivalStationId" });
             DropIndex("dbo.AbpSettings", new[] { "UserId" });
             DropIndex("dbo.AbpUserRoles", new[] { "UserId" });
             DropIndex("dbo.AbpUserLogins", new[] { "UserId" });
@@ -664,6 +650,8 @@ namespace TrainTickets.Migrations
             DropIndex("dbo.AbpPermissions", new[] { "UserId" });
             DropIndex("dbo.AbpPermissions", new[] { "RoleId" });
             DropIndex("dbo.AbpOrganizationUnits", new[] { "ParentId" });
+            DropIndex("dbo.Order", new[] { "DisaptchingStation_Id" });
+            DropIndex("dbo.Order", new[] { "ArrivalStationId" });
             DropIndex("dbo.AbpNotificationSubscriptions", new[] { "NotificationName", "EntityTypeName", "EntityId", "UserId" });
             DropIndex("dbo.AbpFeatures", new[] { "EditionId" });
             DropIndex("dbo.AbpBackgroundJobs", new[] { "IsAbandoned", "NextTryTime" });
@@ -697,6 +685,9 @@ namespace TrainTickets.Migrations
                 {
                     { "DynamicFilter_TenantNotificationInfo_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
+            DropTable("dbo.TrainType");
+            DropTable("dbo.Train");
+            DropTable("dbo.Route");
             DropTable("dbo.AbpSettings",
                 removedAnnotations: new Dictionary<string, object>
                 {
@@ -742,6 +733,8 @@ namespace TrainTickets.Migrations
                     { "DynamicFilter_OrganizationUnit_MayHaveTenant", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                     { "DynamicFilter_OrganizationUnit_SoftDelete", "EntityFramework.DynamicFilters.DynamicFilterDefinition" },
                 });
+            DropTable("dbo.Station");
+            DropTable("dbo.Order");
             DropTable("dbo.AbpNotificationSubscriptions",
                 removedAnnotations: new Dictionary<string, object>
                 {

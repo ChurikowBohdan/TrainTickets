@@ -21,11 +21,6 @@ namespace TrainTickets.Web.Controllers {
 		}
 
 		[HttpGet]
-		public ActionResult Details(int id) {
-			return View(_routeService.GetStation(id));
-		}
-
-		[HttpPost]
 		public ActionResult Delete(int id) {
 			_routeService.DeleteStation(id);
 			return RedirectToAction("List");
@@ -38,13 +33,26 @@ namespace TrainTickets.Web.Controllers {
 		}
 
 		[HttpPost]
-		ActionResult Edit(StationDto station) {
+		public ActionResult Edit(StationDto station) {
 			if (!ModelState.IsValid) {
 				return RedirectToAction("Edit", new { Id = station.Id });
 			}
 
 			_routeService.UpdateStation(station);
-			return RedirectToAction("Details", new { Id = station.Id });
+			return RedirectToAction("List");
+		}
+
+		[HttpGet]
+		public ActionResult Add() {
+			return View();
+		}
+
+		[HttpPost]
+		public ActionResult Add(StationDto newStation) {
+			if (ModelState.IsValid) {
+				_routeService.AddStation(newStation);
+			}
+			return RedirectToAction("List");
 		}
 	}
 }

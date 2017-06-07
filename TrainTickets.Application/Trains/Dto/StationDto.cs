@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrainTickets.Routes.Dto {
+namespace TrainTickets.Trains.Dto {
 
-	[AutoMapFrom(typeof(Station))]
-	[AutoMapTo(typeof(Station))]
-	public class StationDto : EntityDto {
+	[AutoMapFrom(typeof(TrainType))]
+	[AutoMapTo(typeof(TrainType))]
+	public class TrainTypeDto : EntityDto {
 		public string Name { get; set; }
 	}
 }
