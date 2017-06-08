@@ -18,6 +18,9 @@ namespace TrainTickets.Routes {
 
 		//Routes
 		ICollection<RouteListItemDto> GetRoutes();
-
+		RouteDetailsDto GetRouteDetails(int trainId);
+		AddRouteDto GetAddRouteDetails();
+		void AddRout(AddRouteDto routeDto);
+		void DeleteRoute(int trainId);
 	}
 }

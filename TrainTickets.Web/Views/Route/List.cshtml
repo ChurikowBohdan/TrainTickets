@@ -5,10 +5,10 @@
 <h2>@L("Routes")</h2>
 @Html.ActionLink(L("Add new route"), "Add");
 @Html.Grid(Model).Named(L("Stations")).Columns(columns => {
-	columns.Add(t => t.Id).Titled(L("Id")).Sortable(true).SetWidth(50);
 	columns.Add(t => t.DisaptchingStation).Titled(L("DisaptchingStation")).Sortable(true).Filterable(true).SetWidth(110);
 	columns.Add(t => t.DisaptchingTime).Titled(L("DisaptchingTime")).Sortable(true).Filterable(true).SetWidth(110);
 	columns.Add(t => t.ArrivalStation).Titled(L("ArrivalStation")).Sortable(true).Filterable(true).SetWidth(110);
 	columns.Add(t => t.ArrivalTime).Titled(L("ArrivalTime")).Sortable(true).Filterable(true).SetWidth(110);
 	columns.Add(t => t.Price).Titled(L("Price")).Sortable(true).Filterable(true).SetWidth(110);
+	columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Details"), "Details", new { TrainId = v.Number })</b>);
 }).WithPaging(20)

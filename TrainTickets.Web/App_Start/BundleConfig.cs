@@ -19,7 +19,9 @@ namespace TrainTickets.Web
                     .Include("~/Scripts/sweetalert/sweet-alert.css", new CssRewriteUrlTransform())
                     .Include("~/Content/flags/famfamfam-flags.css", new CssRewriteUrlTransform())
                     .Include("~/Content/font-awesome.min.css", new CssRewriteUrlTransform())
-                );
+					.Include("~/Content/bootstrap.css", new CssRewriteUrlTransform())
+					.Include("~/Content/bootstrap-datetimepicker.min.css", new CssRewriteUrlTransform())
+				);
 
             //~/Bundles/vendor/js/top (These scripts should be included in the head of the page)
             bundles.Add(
@@ -40,8 +42,9 @@ namespace TrainTickets.Web
                         "~/Scripts/jquery-ui-1.11.4.min.js",
 
                         "~/Scripts/bootstrap.min.js",
-
-                        "~/Scripts/moment-with-locales.min.js",
+						"~/Scripts/moment-with-locales.min.js",
+						 "~/Scripts/bootstrap-datetimepicker.min.js",
+						 "~/Scripts/respond.js",
                         "~/Scripts/jquery.validate.min.js",
                         "~/Scripts/jquery.blockUI.js",
                         "~/Scripts/toastr.min.js",

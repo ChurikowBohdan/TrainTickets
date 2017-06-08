@@ -58,8 +58,8 @@ namespace TrainTickets.EntityFramework {
 			modelBuilder.Entity<Train>().HasRequired(t => t.TrainType).WithMany().HasForeignKey(t => t.TrainTypeId);
 			modelBuilder.Entity<Route>().HasRequired(t => t.ArrivalStation).WithMany().HasForeignKey(t => t.ArrivalStationId);
 			modelBuilder.Entity<Route>().HasRequired(t => t.DisaptchingStation).WithMany().HasForeignKey(t => t.DispatchingStationId);
-			modelBuilder.Entity<Route>().HasOptional(t => t.PreviousStation).WithMany().HasForeignKey(t => t.PreviousStationId);
-			modelBuilder.Entity<Route>().HasOptional(t => t.NextStation).WithMany().HasForeignKey(t => t.NextStationId);
+			modelBuilder.Entity<Route>().HasOptional(t => t.PreviousRoute).WithMany().HasForeignKey(t => t.PreviousRouteId);
+			modelBuilder.Entity<Route>().HasRequired(t => t.Train).WithMany().HasForeignKey(t => t.TrainId);
 
 			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 		}

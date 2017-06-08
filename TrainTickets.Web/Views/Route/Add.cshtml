@@ -1,0 +1,127 @@
+﻿@model TrainTickets.Routes.Dto.AddRouteDto
+
+<h2>@L("AddRoute")</h2>
+@using (Html.BeginForm("Add", "Route", FormMethod.Post)) {
+	<div class="form-group">
+		<label for="sel1">@L("SelectTrain")</label>
+		@Html.DropDownListFor(t => Model.TrainId, new SelectList(Model.AvailableTrains, "Id", "Number"), new { @class = "form-control" })
+	</div>
+	@Html.AntiForgeryToken();
+	<table class="table">
+		<thead>
+			<tr>
+				<th>@L("DisaptchingStation")</th>
+				<th>@L("ArrivalStation")</th>
+				<th>@L("DisaptchingTime")</th>
+				
+				<th>@L("ArrivalTime")</th>
+				<th>@L("Price")</th>
+			</tr>
+		</thead>
+		<tbody id="table-body">
+		</tbody>
+	</table>
+	<style>
+		display-n {
+			display:none;
+		}
+	</style>
+	<h2>@L("AddRoutePart")</h2>
+	<div class="form-group">
+		<label for="sel1">@L("SelectDisaptchingStation")</label>
+		@Html.DropDownListFor(t => Model.DisaptchingStationId, new SelectList(Model.AvailableStations, "Id", "Name"), new { @class = "form-control", @id = "dispatching-station"})
+	</div>
+	<div class="form-group">
+		<label for="sel1">@L("SelectDisaptchingTime")</label>
+		<div class='input-group date' id='datetimepicker1'>
+			@Html.TextBoxFor(t => Model.DisaptchingTime, new { @class = "form-control", @id = "dispatching-time" })
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="sel1">@L("SelectArrivalStation")</label>
+		@Html.DropDownListFor(t => Model.ArrivalStationId, new SelectList(Model.AvailableStations, "Id", "Name"), new { @class = "form-control", @id = "arrival-station"})
+	</div>
+	<div class="form-group">
+		<label for="sel1">@L("SelectArrivalTime")</label>
+		<div class='input-group date' id='datetimepicker2'>
+			@Html.TextBoxFor(t => Model.ArrivalTime, new { @class = "form-control", @id = "arrival-time"})
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="sel1">@L("InputPrice")</label>
+		<div class='input-group date'>
+			<input type="number" id="price" class="form-control"/>
+		</div>
+	</div>
+	<button class="btn" type="button" id="add-route-part">@L("AddRoutePart")</button>
+	<button class="btn" type="submit" id="add-route-part">@L("Submit")</button>
+}
+
+@section scripts {
+	<script>
+		$('.remove-row').on('click', () => {
+			let id = $(this).attr('data-id');
+			$('#row-' + id).remove();
+		})
+
+		$(function () {
+			$('#datetimepicker1').datetimepicker({
+				locale: 'ru'
+			});
+		});
+
+		$(function () {
+			$('#datetimepicker2').datetimepicker({
+				locale: 'ru'
+			});
+		});
+
+		$(function () {
+			$('#add-route-part').on('click', (e) => {
+				let dispathcingStation = $('#dispatching-station').children(':selected');
+				let dispathcingStationId = dispathcingStation.attr('value');
+				let dispatchingStationName = dispathcingStation.text();
+				let dispathcingTime = $('#dispatching-time').val();
+				let arrivalStation = $('#arrival-station').children(':selected');
+				let arrivalStationId = arrivalStation.attr('value');
+				let arrivalStationName = arrivalStation.text();
+				let arrivalTime = $('#arrival-time').val();
+				let price = $('#price').val();
+				let table = $('#table-body');
+				let index = table.children().length;
+				let html = `<tr id='row-${index}'>
+					<td >
+						<input name="RouteParts[${index}].DisaptchingStationId" type="number" value="${dispathcingStationId}" style="display:none">
+						<span>${dispatchingStationName}</span>
+					</td>
+					<td >
+						<input name="RouteParts[${index}].ArrivalStationId" type="number" value="${arrivalStationId}" style="display:none">
+						<span>${arrivalStationName}</span>
+					</td>
+					<td>
+						<input name="RouteParts[${index}].DisaptchingTime" type="text" value="${dispathcingTime}" style="display:none">
+						<span>${dispathcingTime}</span>
+					</td>
+					<td>
+						<input name="RouteParts[${index}].ArrivalTime" type="text" value="${arrivalTime}" style="display:none">
+						<span>${arrivalTime}</span>
+					</td>
+					<td>
+						<input name="RouteParts[${index}].Price" type="text" value="${price}" style="display:none">
+						<input name="RouteParts[${index}].Order" type="text" value="${index}" style="display:none">
+						<span>${price}</span>
+					</td>
+				</tr>`;
+				table.append(html);
+			})
+		})
+
+		
+	</script>
+}

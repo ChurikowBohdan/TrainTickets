@@ -15,5 +15,7 @@ namespace TrainTickets.Routes.Dto {
 		public DateTime ArrivalTime { get; set; }
 		public decimal Price { get; set; }
 		public string TrainNumber { get; set; }
+		public int TrainId { get; set; }
+		public int Number { get; set; }
 	}
 }

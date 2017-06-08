@@ -1,0 +1,68 @@
+﻿@model TrainTickets.Routes.Dto.RouteDetailsDto
+<div class="container">
+	<h2>Route details</h2>
+	<table class="table">
+		<tbody>
+			<tr>
+				<td>@L("TrainNumber")</td>
+				<td>@Model.TrainNumber</td>
+			</tr>
+			<tr>
+				<td>@L("TotalPlaces")</td>
+				<td>@Model.TotalPlaces.ToString()</td>
+			</tr>
+			<tr>
+				<td>@L("AvailablePlaces")</td>
+				<td>@Model.AvailablePlaces.ToString()</td>
+			</tr>
+			<tr>
+				<td>@L("ArrivalStation")</td>
+				<td>@Model.ArrivalStation</td>
+			</tr>
+			<tr>
+				<td>@L("ArrivalTime")</td>
+				<td>@Model.ArrivalTime.ToString()</td>
+			</tr>
+			<tr>
+				<td>@L("DisaptchingStation")</td>
+				<td>@Model.DisaptchingStation</td>
+			</tr>
+			<tr>
+				<td>@L("DisaptchingTime")</td>
+				<td>@Model.DisaptchingTime.ToString()</td>
+			</tr>
+			<tr>
+				<td>@L("TotalPrice")</td>
+				<td>@Model.TotalPrice.ToString()</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+
+	<h3>@L("IntermediateStations")</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>@L("DisaptchingStation")</th>
+				<th>@L("DisaptchingTime")</th>
+				<th>@L("ArrivalStation")</th>
+				<th>@L("ArrivalTime")</th>
+				<th>@L("Price")</th>
+			</tr>
+			
+		</thead>
+		<tbody>
+			@foreach(var routeItem in Model.ChildRoutes) {
+				<tr>
+					<td>@routeItem.DisaptchingStation</td>
+					<td>@routeItem.DisaptchingTime.ToString()</td>
+					<td>@routeItem.ArrivalStation</td>
+					<td>@routeItem.ArrivalTime.ToString()</td>
+					<td>@routeItem.Price.ToString()</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+	@Html.ActionLink(L("Delete"), "DeleteRoute");
+</div>
