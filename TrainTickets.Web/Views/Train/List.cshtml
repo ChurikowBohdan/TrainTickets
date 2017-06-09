@@ -3,12 +3,17 @@
 @using GridMvc.Html
 
 <h2>@L("Trains")</h2>
-@Html.ActionLink(L("AddNewTrain"), "Add");
+@if (IsGranted("Pages.Users")) {
+	@Html.ActionLink(L("AddNewTrain"), "Add")
+}
+
 @Html.Grid(Model).Named(L("Trains")).Columns(columns => {
 	columns.Add(t => t.Id).Titled(L("Id")).Sortable(true).SetWidth(50);
 	columns.Add(t => t.Number).Titled(L("Number")).Filterable(true).Sortable(true).SetWidth(110);
 	columns.Add(t => t.PlacesCount).Titled(L("PlacesCount")).Filterable(true).Sortable(true).SetWidth(110);
 	columns.Add(t => t.TrainTypeName).Titled(L("TrainType")).Filterable(true).Sortable(true).SetWidth(110);
-	columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Edit"), "Edit", new { Id = v.Id })</b>);
-	columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Delete"), "Delete", new { Id = v.Id })</b>);
+	if (IsGranted("Pages.Users")) {
+		columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Edit"), "Edit", new { Id = v.Id })</b>);
+		columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Delete"), "Delete", new { Id = v.Id })</b>);
+	}
 }).WithPaging(20)

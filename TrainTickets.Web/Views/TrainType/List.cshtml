@@ -5,10 +5,14 @@
 
 @using GridMvc.Html
 <h2>@L("TrainTypes")</h2>
-@Html.ActionLink(L("Add new train type"), "Add");
+@if (IsGranted("Pages.Users")) {
+	@Html.ActionLink(L("Add new train type"), "Add")
+}
 @Html.Grid(Model).Named(L("TrainTypes")).Columns(columns => {
 	columns.Add(t => t.Name).Titled(L("Name")).SetWidth(110).Filterable(true).Sortable(true);
 	columns.Add(t => t.Id).Titled(L("Id")).SetWidth(110).Sortable(true);
-	columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Edit"), "Edit",new { Id = v.Id})</b>);
-	columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Delete"), "Delete", new { Id = v.Id })</b>);
+	if (IsGranted("Pages.Users")) {
+		columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Edit"), "Edit", new { Id = v.Id })</b>);
+		columns.Add().SetWidth(30).Encoded(false).Sanitized(false).RenderValueAs(v => @<b>@Html.ActionLink(L("Delete"), "Delete", new { Id = v.Id })</b>);
+	}
 }).WithPaging(20)

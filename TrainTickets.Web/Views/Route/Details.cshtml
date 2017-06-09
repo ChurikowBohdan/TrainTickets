@@ -64,5 +64,7 @@
 			}
 		</tbody>
 	</table>
-	@Html.ActionLink(L("Delete"), "DeleteRoute");
+	@if (IsGranted("Pages.Users")) {
+		@Html.ActionLink(L("Delete"), "DeleteRoute")
+	}
 </div>

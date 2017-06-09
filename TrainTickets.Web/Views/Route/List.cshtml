@@ -3,7 +3,9 @@
 @using GridMvc.Html
 
 <h2>@L("Routes")</h2>
-@Html.ActionLink(L("Add new route"), "Add");
+@if (IsGranted("Pages.Users")) {
+	@Html.ActionLink(L("Add new route"), "Add");
+}
 @Html.Grid(Model).Named(L("Stations")).Columns(columns => {
 	columns.Add(t => t.DisaptchingStation).Titled(L("DisaptchingStation")).Sortable(true).Filterable(true).SetWidth(110);
 	columns.Add(t => t.DisaptchingTime).Titled(L("DisaptchingTime")).Sortable(true).Filterable(true).SetWidth(110);
